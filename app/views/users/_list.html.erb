@@ -1,0 +1,48 @@
+<div>
+		<h2>User Info</h2>
+
+		<h3>Name</h3>
+		<%= user.name %>
+
+		<h3>Introduction</h3>
+		<%= user.introduction %>
+
+		<h3>image</h3>
+		<%= attachment_image_tag user, :profile_image, :fill, 60, 60, class: "img-circle profile-thumb", fallback: "no_image.jpg" %>
+
+
+		<p><%= link_to "", edit_user_path(user), class:"glyphicon glyphicon-wrench" %></p>
+</div>
+
+<div>
+		<h2>New Book</h2>
+
+
+		       <% if book.errors.any? %>
+		        <h3><%= book.errors.count %>件のエラーが発生しました。</h3>
+			       <ul>
+			       <% book.errors.full_messages.each do |message| %>
+			        <li><%= message %></li>
+			       </ul>
+		        	<% end %>
+		        <% end %>
+
+
+		<%= form_for(book) do |f| %>
+
+			<h3>Title</h3>
+		<%= f.text_field :title %>
+
+			<h3>Opinion</h3>
+			<%= f.text_field :body %>
+
+			<%= f.submit 'Create Book' %>
+
+			<% end %>
+</div>
+	
+
+
+
+
+
